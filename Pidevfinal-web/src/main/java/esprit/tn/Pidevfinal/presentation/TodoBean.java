@@ -1,4 +1,4 @@
-package esprit.tn.Pidevfinal.presentation.mbeans;
+package tn.esprit.JEEPI.presentation.mbeans;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-import esprit.tn.Pidevfinal.persistence.Todo;
-import esprit.tn.Pidevfinal.services.TodoServiceLocal;
+import tn.esprit.JEEPI.persistence.Todo;
+import tn.esprit.JEEPI.services.TodoServiceLocal;
 
 @ManagedBean
 @RequestScoped
