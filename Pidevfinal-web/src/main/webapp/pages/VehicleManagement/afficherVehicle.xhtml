@@ -1,0 +1,96 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template/LogTemplate.xhtml">
+                
+                
+<ui:define name="pageContent">
+	 
+	 
+	 <h:form>
+
+
+			<h:panelGrid>
+				<h:form>
+					<p:dataTable value="#{vehicleBean.getMyVehicleByInsuredId(authBean.user.id)}" var="vehicle" border="1">
+					
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="registration" />
+							</f:facet>
+							<h:outputText value="#{vehicle.matriculation}" />
+						</p:column>
+			
+			
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="chassis number" />
+							</f:facet>
+							<h:outputText value="#{vehicle.numChassis}" />
+						</p:column>
+						
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Brand" />
+							</f:facet>
+							<h:outputText value="#{vehicle.mark}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Model" />
+							</f:facet>
+							<h:outputText value="#{vehicle.model}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="color" />
+							</f:facet>
+							<h:outputText value="#{vehicle.color}" />
+						</p:column>
+						
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="power" />
+							</f:facet>
+							<h:outputText value="#{vehicle.horsePower}" />
+						</p:column>
+						
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Action" />
+							</f:facet>
+
+							<p:commandButton
+								action="#{vehicleBean.SupprimerVehicle(vehicle.matriculation)}" value="Delete" >
+								
+								<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+   								</p:commandButton>
+ 
+   									 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+      								  <p:commandButton value="Yes" type="button" action="#{vehicleBean.SupprimerVehicle(vehicle.matriculation)}" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        						      <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    								 </p:confirmDialog>
+    								 
+    								 
+								<p:commandLink action="#{vehicleBean.TreatVehicleDemande()}" value="Update">
+								</p:commandLink>
+
+						</p:column>
+						</p:dataTable>
+				</h:form>
+			</h:panelGrid>
+			
+
+
+
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

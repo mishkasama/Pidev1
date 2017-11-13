@@ -1,0 +1,223 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    >
+ <head>  
+<meta charset="utf-8" />    
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />    
+<meta name="description" content="" />   
+<meta name="author" content="" />   
+<title>Sinister Managment</title>
+    <link href="../../resources/assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="../../resources/assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="../../resources/assets/css/style.css" rel="stylesheet" />
+</head> 
+
+
+
+<!-- *********** -->      
+
+
+<body>
+
+		<ui:include src="/pages/UserManagement/Profile1.xhtml" />
+
+    <header>
+        
+<div class="container">          
+<div class="row">               
+
+            </div>
+        </div>
+    </header>
+    <!-- HEADER END-->
+    
+<div class="navbar navbar-inverse set-radius-zero">
+        
+<div class="container">
+            
+<div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar" />
+                    <span class="icon-bar" />
+                    <span class="icon-bar" />
+                </button>
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/img/logo.png" alt="" />
+                </a>
+            </div>
+            
+<div class="left-div">
+                
+<div class="user-settings-wrapper">
+                    
+<ul class="nav">
+                        
+<li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                                <span class="glyphicon glyphicon-user" style="font-size: 25px;" />
+                            </a>
+                            
+<div class="dropdown-menu dropdown-settings">
+                                
+<div class="media">
+                                    <a class="media-left" href="#">
+                                        <img src="assets/img/64-64.jpg" alt="" class="img-rounded" />
+                                    </a>
+                                    
+<div class="media-body">
+                                        
+<a>#{authBean.user.id}</a>
+                                    </div>
+                                </div>
+                                
+<hr />
+                                
+
+                                
+<hr />
+                                <a href="#{request.contextPath}/pages/UserManagement/Profile.jsf" class="btn btn-info btn-sm">Full Profile</a> <a href="login.html" class="btn btn-danger btn-sm">Logout</a>
+                             </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>    
+    
+    
+<!--     
+        LOGO HEADER END
+
+		<div id="main">
+		<div class="shell">
+			Content
+			<div id="content">
+            <h:form id="form"> 
+                           
+				<div class="post last" style="float:left">
+                   <h3>Profile Informations</h3>
+      
+                  
+                <p:fieldset id="container" legend="Personnel Information" toggleable="False" style="width:300px;height:400px;overflow:auto;">
+                    
+                    
+                    <h:panelGroup>
+                
+                      <h:outputLabel value="Name : " style="FONT-SIZE:big; COLOR:blue;font-weight:bold;"/>
+                      <h:outputText value="#{authBean.user.name}" /><br />
+                      <h:outputLabel value="Birthday Date : " style="FONT-SIZE:big; COLOR:blue;font-weight:bold;"/>
+                      <h:outputText value="#{authBean.user.birthdayDate}" /><br />
+                      <h:outputLabel value="Address : " style="FONT-SIZE:big; COLOR:blue;font-weight:bold;"/>
+                      <h:outputText value="#{authBean.user.adress}" /><br />
+                      <h:outputLabel value="Login : " style="FONT-SIZE:big; COLOR:blue;font-weight:bold;"/>
+                      <h:outputText value="#{authBean.user.login}" /><br />
+                      <h:outputLabel value="Password : " style="FONT-SIZE:big; COLOR:blue;font-weight:bold;"/>
+                      <h:outputText value="#{authBean.user.password}" /><br />
+                      <h:outputLabel value="Mail : " style="FONT-SIZE:big; COLOR:blue;font-weight:bold;"/>
+                      <h:outputText value="#{authBean.user.email}" /><br />
+                      <h:outputLabel value="Phone : " style="FONT-SIZE:big; COLOR:blue;font-weight:bold;"/>
+                      <h:outputText value="#{authBean.user.phone}" /><br />
+                      
+                    </h:panelGroup>
+                    
+                      <p:commandButton value="Save Update" actionListener="#{userBean.doSaveOrUpdate()}" update="container" 
+                                         icon="ui-icon-person" onclick="dlg.show()" />
+                </p:fieldset>
+                
+                    </div>
+    
+
+                <p:dialog header="Profile Details" 
+				  widgetVar="dlg"
+			      resizable="false" 
+			      showEffect="fade"
+			      hideEffect="fade">
+     
+				<div class="post last"  style="float:right;clear:right;">
+                     <h3>Profile Details</h3>
+      
+                  
+                <p:fieldset id="container1" legend="Update Personnel Informations" toggleable="False" style="width:300px;height:400px;overflow:auto;">
+                    
+                    
+                    <h:panelGroup>
+                    
+			<h:panelGrid id="display" 
+			             columns="2" 
+			             cellpadding="4" >
+
+		
+						
+ 
+				 <h:outputText value="Last Name : " style="font-weight:bold"/> 
+                <p:inplace id="nomTrader" editor="true"> 
+                <p:inputText value="#{authBean.user.name}" required="true" requiredMessage="*" label="text" /> 
+                </p:inplace> 
+                
+                 <h:outputText value="Birthday Date : " style="font-weight:bold"/> 
+                <p:inplace id="BirthdayTrader" editor="true"> 
+                <p:calendar value="#{authBean.user.birthdayDate}" required="true" requiredMessage="*" label="text" /> 
+                </p:inplace> 
+                
+                 <h:outputText value="Address : " style="font-weight:bold"/> 
+                <p:inplace id="addressTrader" editor="true"> 
+                <p:inputText value="#{authBean.user.adress}" required="true" requiredMessage="*" label="text" /> 
+                </p:inplace> 
+                <h:outputText value="Login : " style="font-weight:bold"/> 
+                <p:inplace id="bgdateTrader" editor="true"> 
+                <p:inputText value="#{authBean.user.login}" required="true" requiredMessage="*" label="text" /> 
+                </p:inplace> 
+                <h:outputText value="Password : " style="font-weight:bold"/> 
+                <p:inplace id="pwdTrader" editor="true"> 
+                <p:inputText value="#{authBean.user.password}" required="true" requiredMessage="*" label="text" /> 
+                </p:inplace> 
+                 <h:outputText value="Mail : " style="font-weight:bold"/> 
+                <p:inplace id="mailTrader" editor="true"> 
+                <p:inputText value="#{authBean.user.email}" required="true" requiredMessage="*" label="text" /> 
+                </p:inplace> 
+                  <h:outputText value="Phone : " style="font-weight:bold"/> 
+                <p:inplace id="phoneTrader" editor="true"> 
+                <p:inputText value="#{authBean.user.phone}" required="true" requiredMessage="*" label="text" /> 
+                </p:inplace>
+                
+                 
+               </h:panelGrid>
+               
+		
+			<p:commandButton action="#{userBean.doSaveOrUpdate()}" value="Update"   update="container" />
+			<p:commandButton action="#" value="Cancel" onclick="dlg.hide()"  />
+		
+          </p:dialog>
+               </h:panelGroup>
+               </p:fieldset>
+                  </div>  
+                  
+            </h:form>
+            
+            </div></div></div> -->
+       
+	<!-- ********** -->
+    <footer>
+        
+<div class="container">
+            
+<div class="row">
+                
+<div class="col-md-12">
+                    © 2017 Gestion Sinister | By : <a href="http://www.designbootstrap.com/" target="_blank">GL TEAM</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER SECTION END-->
+    <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- CORE JQUERY SCRIPTS -->
+    
+<script src="../../resources/assets/js/jquery-1.11.1.js"></script>
+    <!-- BOOTSTRAP SCRIPTS  -->
+    
+<script src="../../resources/assets/js/bootstrap.js"></script>
+</body></html>

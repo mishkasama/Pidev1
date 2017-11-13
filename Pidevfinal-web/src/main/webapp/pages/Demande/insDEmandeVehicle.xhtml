@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"
+
+xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	>
+<head>
+  
+<meta charset="utf-8" />
+  
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  
+<meta name="description" content="" />
+  
+<meta name="author" content="" />
+  
+<title>Sinister Management</title>
+  <!-- Bootstrap core CSS-->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Custom fonts for this template-->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin.css" rel="stylesheet" /></head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="alert-info">#{loginBean.agent.name}</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" />
+    </button>
+    
+<div class="collapse navbar-collapse" id="navbarResponsive">
+      
+<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        
+<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="welcome.xhtml">
+            <i class="fa fa-fw fa-dashboard" />
+            <span class="nav-link-text">Dashboard</span>
+          </a>
+        </li>
+        
+
+
+        
+<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Endorsment Managment">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-file" />
+            <span class="nav-link-text">Endorsment Managment</span>
+          </a>
+          
+<ul class="sidenav-second-level collapse" id="collapseExamplePages">
+            
+			<li>
+              <a href="valideList.jsf">Valide List </a>
+             
+            </li>
+            
+			<li>
+              <a href="invalideList.jsf">Invalide List </a>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+      
+<ul class="navbar-nav sidenav-toggler">
+        
+<li class="nav-item">
+          <a class="nav-link text-center" id="sidenavToggler">
+            <i class="fa fa-fw fa-angle-left" />
+          </a>
+        </li>
+      </ul>
+      
+<ul class="navbar-nav ml-auto">
+        
+<li class="nav-item dropdown">
+         
+       
+      
+        </li>
+<li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+            <i class="fa fa-fw fa-sign-out" />Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+<div class="content-wrapper">
+    
+<div class="container-fluid">
+<center><h2 class="alert-light" >INSSURED DEMANDE </h2></center>
+<br>
+
+</br>
+  <center>  
+
+  
+  
+<h:dataTable class="table table-bordered" value="#{demandeBean.insDemande}" var="demandes" border="1">
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="Date"/>
+</f:facet>
+<h:outputText value="#{demandes.date}" >
+  <f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+  
+  </h:outputText>
+</h:column>
+
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="INSSURED"/>
+</f:facet>
+<h:outputText value="#{demandes.users.name}" >
+  </h:outputText>
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="TYPE"/>
+</f:facet>
+<h:outputText value="#{demandes.type}" >
+  </h:outputText>
+</h:column>
+
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="MATRICULATION"/>
+</f:facet>
+<h:outputText value="#{demandes.newMatriculation}" />
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="OLD MATRICULATION"/>
+</f:facet>
+<h:outputText value="#{demandes.oldMatriculation}" />
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="New Mark"/>
+</f:facet>
+<h:outputText value="#{demandes.newMark}" />
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="OLD Mark"/>
+</f:facet>
+<h:outputText value="#{demandes.oldMark}" />
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="NUM CHASSIS"/>
+</f:facet>
+<h:outputText value="#{demandes.numChassis}" />
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="Color"/>
+</f:facet>
+<h:outputText value="#{demandes.color}" />
+</h:column>
+
+
+
+
+<h:column>
+<f:facet name="header">
+
+</f:facet>
+<h:form>
+<h:commandButton class="alert-success" action="#{demandeBean.TreatVehicleDemande(demandes.newMatriculation,demandes.oldMatriculation,demandes.id,demandes.vehicle.matriculation,demandes.color,demandes.horsePower,demandes.model,demandes.numChassis,demandes.newMark)}" id="btn" value="TREAT" />
+  </h:form>
+    
+</h:column>
+
+
+</h:dataTable> 
+
+</center>  
+
+<hr />
+    </div>
+    <footer class="sticky-footer">
+      
+<div class="container">
+        
+<div class="text-center">
+          <small>Copyright © Sinister Management</small>
+        </div>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up" />
+    </a>
+    <!-- Logout Modal-->
+    
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      
+<div class="modal-dialog" role="document">
+        
+<div class="modal-content">
+          
+<div class="modal-header">
+            
+<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          
+<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          
+<div class="modal-footer">
+            <h:commandButton class="btn btn-secondary" type="button" data-dismiss="modal" value="Cancel"/>
+            <h:commandButton class="btn btn-primary"  id="btn" action="#{loginBean.doLogout()}" value="Logout" />
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    
+<script src="vendor/jquery/jquery.min.js"></script>
+    
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    
+<script src="js/sb-admin.min.js"></script>
+  </div>
+</body></html>
